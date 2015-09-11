@@ -2,7 +2,10 @@ import os
 import uuid
 import redis
 import json
+import newrelic.agent
 from flask import Flask
+
+newrelic.agent.initialize()
 
 rediscloud_service = json.loads(os.environ['VCAP_SERVICES'])['rediscloud'][0]
 credentials = rediscloud_service['credentials']
